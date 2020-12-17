@@ -13,13 +13,25 @@ makeBricks(3, 1, 9) → false
 makeBricks(3, 2, 10) → true
      */
     public static void main(String[] args) {
-
+        System.out.println("false: " + makeBricks(3, 1, 9));
+        System.out.println("true: " + makeBricks(3, 1, 8));
+        System.out.println("true: " + makeBricks(3, 2, 10));
+        System.out.println("false: " + makeBricks(1, 4, 12));
     }
+
+    //1 , 4 , 12
     public static boolean makeBricks(int small, int big, int goal) {
-        int smallBrick = 1;
         int bigBrick = 5;
+        int avalibleBig = bigBrick * big;
+        // hvis målet er større end alle brickene tilsammen er det false
+        if (goal > avalibleBig + small){
+            return false;
+            //eks: 12 % 5 = 2 > small hvis % 5 er større end det antal small bricks tilgængelige er det ogs false
+            //så i dette tilfælde: hvis der ikke er nok tilgængelig small bricks er det false
+        }if (goal % bigBrick > small){
+            return false;
+        }
 
-
-        return false;
+        return true;
     }
 }
